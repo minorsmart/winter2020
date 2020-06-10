@@ -18,7 +18,9 @@ n <- dim(newDF)[1]
 newDF$Label <- sapply(1:n, function(x) HTML(paste("<b>",newDF[x,4], "</b>", "<br>", newDF[x,2])))
 
 tblGeslacht <- table(newDF$Geslacht, newDF$OpleidingType) %>% addmargins(., FUN = list(Totaal = sum), quiet = TRUE)
-tblOpleiding <- table(newDF$Instelling, newDF$OpleidingType) %>% addmargins(., FUN = list(Totaal = sum), quiet = TRUE)
+tblOpleidingType <- table(newDF$Instelling, newDF$OpleidingType) %>% addmargins(., FUN = list(Totaal = sum), quiet = TRUE)
+
+tblOpleidingNaam <- table(newDF$Instelling, newDF$OpleidingNaam) %>% addmargins(., FUN = list(Totaal = sum), quiet = TRUE)
 
 cntHAN <- filter(newDF, Plaats == "Arnhem") %>% dim
 ```
@@ -46,15 +48,23 @@ leaflet(newDF, width = 900) %>%
 <hr>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
-dfGeslacht <- data.frame(title = 'Verdeling inschrijvingen naar geslacht', Geslacht = rownames(tblGeslacht)[1:2], Aantal = tblGeslacht[1:2,3])
+dfGeslacht <- data.frame(title = 'Verdeling inschrijvingen naar geslacht', Geslacht = rownames(tblGeslacht)[1:2], Aantal = tblGeslacht[1:2])
 plot_ly(dfGeslacht, labels = ~Geslacht, values = ~Aantal, type = 'pie', width = 700) %>% layout(showlegend = TRUE) %>% layout(title = 'Verdeling inschrijvingen naar geslacht')
 ```
 <hr>
 
 ```{r echo=FALSE, warning=FALSE}
-dfOpleiding <- data.frame(Type = colnames(tblOpleiding)[1:2], Aantal = tblOpleiding[dim(tblOpleiding)[1],1:2])
-plot_ly(dfOpleiding, labels = ~Type, values = ~Aantal, type = 'pie', width = 700) %>% layout(showlegend = TRUE) %>% layout(title = 'Verdeling inschrijvingen naar opleidingstype')
+dfOpleidingType <- data.frame(Type = colnames(tblOpleidingType)[1:2], Aantal = tblOpleidingType[dim(tblOpleidingType)[1],1:2])
+plot_ly(dfOpleidingType, labels = ~Type, values = ~Aantal, type = 'pie', width = 700) %>% layout(showlegend = TRUE) %>% layout(title = 'Verdeling inschrijvingen naar opleidingstype')
 ```
+
+```{r echo=FALSE, warning=FALSE}
+dfOpleidingNaam <- data.frame(Naam = colnames(tblOpleidingNaam)[1:10], Aantal = tblOpleidingNaam[dim(tblOpleidingNaam)[1],1:10])
+plot_ly(dfOpleidingNaam, labels = ~Naam, values = ~Aantal, type = 'pie', width = 700) %>% layout(showlegend = TRUE) %>% layout(title = 'Verdeling inschrijvingen naar opleiding')
+```
+
+
+
 
 ```{r echo=FALSE, warning=FALSE}
 dfInstelling <- data.frame(Instelling = rownames(tblOpleiding)[1:3], Aantal = tblOpleiding[1:3,dim(tblOpleiding)[2]])
