@@ -16,15 +16,15 @@
     <div class="container-fluid">
         <div class="jumbotron jumbotron-fluid">
             <div class="media">
-                <img src="logo.png" class="mr-5" alt="...">
+                <img src="logo.png" class="d-none d-md-block mr-5" alt="...">
                 <div class="media-body">
                     <h1 class="display-4">Project Charters</h1>
-                    <p class="lead">Hier vind je informatie over de afzonderlijke projecten voor ronde Winter 2020.</p>
+                    <p class="lead">Hier vind je informatie over de afzonderlijke projecten voor ronde Winter 2020 van de HAN Minor Smart Industry.</p>
                 </div>
             </div>
         </div>
-        <div class="row m-4">
-            <div class="col-4">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
                 <div class="lead p-2">
                     We hebben voor deze ronde weer een gevarieerde verzameling aan interessante vraagstukken op het gebied van 
                     Smart Industry verzameld. Hieronder vinden jullie de beschrijvingen en contactgegevens.
@@ -40,7 +40,7 @@
                     wat je kunt aanbieden en nodig hebt en geef dit helder terug bij de eerste kennismaking.
                 </div>
             </div>
-            <div class="col-8">
+            <div class="d-none d-md-block col-8">
                 <img src="technologies.png">
             </div>
         </div>
@@ -72,16 +72,20 @@ let createProjectCard = (project) => {
     doel.innerText = project.Doel;
     doel.className = 'card-text p mb-4';
 
+    let deliverablesTitle = document.createElement('h5')
+    deliverablesTitle.innerHTML = "Deliverables"
+    let deliverables = document.createElement('div');
+    deliverables.innerText = project.Deliverables;
+    deliverables.className = 'card-text p mb-4';
+
     let voorwaardenRow = document.createElement('div')
     voorwaardenRow.className = 'row'
-    
     let kwaliteitCol = document.createElement('div')
     kwaliteitCol.className = 'col'
     let kwaliteitTitle = document.createElement('h5')
     kwaliteitTitle.innerHTML = "Succesvoorwaarden projectteam"
     let kwaliteitText = document.createElement('p')
     kwaliteitText.innerText = project["Succesvoorwaarden projectteam"]
-
     let faciliteitenCol = document.createElement('div')
     faciliteitenCol.className = 'col'
     let faciliteitenTitle = document.createElement('h5')
@@ -91,28 +95,26 @@ let createProjectCard = (project) => {
 
     let cardButtons = document.createElement('div');
     cardButtons.className = 'row';
-
     let firstTech = document.createElement('button');
     firstTech.innerText = project["Smart Technologie 1"];
     firstTech.className = 'btn btn-outline-danger btn-sm m-2';
-
     let secondTech = document.createElement('button');
     secondTech.innerText = project["Smart Technologie 2"];
     secondTech.className = 'btn btn-outline-danger btn-sm m-2';
-
     let thirdTech = document.createElement('button');
     thirdTech.innerText = project["Smart Technologie 3"];
     thirdTech.className = 'btn btn-outline-danger btn-sm m-2';
 
     let cardFooter = document.createElement('div');
     cardFooter.className = 'card-footer alert-primary';
-
     let owner = document.createElement('div');
     owner.innerText = project["Project owners"];
     owner.className = "lead"
 
     cardBody.appendChild(title);
     cardBody.appendChild(doel);
+    cardBody.appendChild(deliverablesTitle)
+    cardBody.appendChild(deliverables)
 
     cardBody.appendChild(voorwaardenRow)
     voorwaardenRow.appendChild(kwaliteitCol)
@@ -128,22 +130,22 @@ let createProjectCard = (project) => {
     cardButtons.appendChild(thirdTech);
 
     card.appendChild(cardBody);
-    
+
     cardFooter.append(owner);
     card.appendChild(cardFooter);
     cardCol.appendChild(card);
     cardContainer.appendChild(cardCol);
-
 }
 
 let initListOfTasks = () => {
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuA_QfxR9bCAm8Injpcx6kLy3bp_A8m2Yek5sHMpx0otFp1ecXVxdcOlx7ritx-dw53WfQDOM6ifCO/pub?output=csv"
     if (cardContainer) {
         document.getElementById('card-container').replaceWith(cardContainer);
         return;
     }
 
     cardContainer = document.getElementById('card-container');
-    d3.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSuA_QfxR9bCAm8Injpcx6kLy3bp_A8m2Yek5sHMpx0otFp1ecXVxdcOlx7ritx-dw53WfQDOM6ifCO/pub?output=csv").then(function(projects) {
+    d3.csv(url).then(function(projects) {
         projects.forEach((project) => {
             createProjectCard(project);
     });
@@ -153,8 +155,6 @@ let initListOfTasks = () => {
 
 initListOfTasks();
 
-    
-    
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
