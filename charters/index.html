@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<title>MSI</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="media">
+                <img src="logo.png" class="d-none d-md-block mr-5" alt="...">
+                <div class="media-body">
+                    <h1 class="display-4">Project Charters</h1>
+                    <p class="lead">Hier vind je informatie over de afzonderlijke projecten voor ronde Winter 2020 van de HAN Minor Smart Industry.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col">
+                <div class="lead p-2">
+                    We hebben voor deze ronde weer een gevarieerde verzameling aan interessante vraagstukken op het gebied van 
+                    Smart Industry verzameld. Hieronder vinden jullie de beschrijvingen en contactgegevens.
+                </div>
+                <div class="p p-2">
+                    Bij iedere beschrijving vinden jullie ook een omschrijving van de verwachte deliverables. Uit ervaring weten we dat 
+                    dit als een start dient te worden beschouwd van het onderzoek naar de definitieve vraag. Neem dit als eerste idee aan en 
+                    voer een eigen oriënterend onderzoek uit. Lees literatuur, luister naar experts, bekijk vergelijkbare casussen, etc.
+                </div>
+                <div class="p p-2">
+                    De opdrachtgevers hebben een aantal verwachtingen wat betreft de kwaliteit van samenwerking geformuleerd en hierbij aangegeven 
+                    wat zij in dit kader van hun kant kunnen aanbieden. Beschouw dit als een uitgangspunt van waaruit je gaat onderhandelen. Bedenk goed 
+                    wat je kunt aanbieden en nodig hebt en geef dit helder terug bij de eerste kennismaking.
+                </div>
+            </div>
+            <div class="d-none d-md-block col-8">
+                <img src="technologies.png">
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2" id="card-container">
+        </div>
+    </div>
+    
+    
+<script>
+
+let cardContainer;
+
+let createProjectCard = (project) => {
+
+    let cardCol = document.createElement('div');
+    cardCol.className = "col mb-4";
+
+    let card = document.createElement('div');
+    card.className = 'card';
+
+    let cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    let title = document.createElement('div');
+    title.innerText = project["Projectnaam (kort)"];
+    title.className = 'h3 card-title';
+
+    let doel = document.createElement('div');
+    doel.innerText = project.Doel;
+    doel.className = 'card-text p mb-4';
+
+    let deliverablesTitle = document.createElement('h5')
+    deliverablesTitle.innerHTML = "Deliverables"
+    let deliverables = document.createElement('div');
+    deliverables.innerText = project.Deliverables;
+    deliverables.className = 'card-text p mb-4';
+
+    let voorwaardenRow = document.createElement('div')
+    voorwaardenRow.className = 'row'
+    let kwaliteitCol = document.createElement('div')
+    kwaliteitCol.className = 'col'
+    let kwaliteitTitle = document.createElement('h5')
+    kwaliteitTitle.innerHTML = "Succesvoorwaarden projectteam"
+    let kwaliteitText = document.createElement('p')
+    kwaliteitText.innerText = project["Succesvoorwaarden projectteam"]
+    let faciliteitenCol = document.createElement('div')
+    faciliteitenCol.className = 'col'
+    let faciliteitenTitle = document.createElement('h5')
+    faciliteitenTitle.innerHTML = "Succesvoorwaarden opdrachtgever"
+    let faciliteitenText = document.createElement('p')
+    faciliteitenText.innerText = project["Succesvoorwaarden opdrachtgevers"]
+
+    let cardButtons = document.createElement('div');
+    cardButtons.className = 'row';
+    let firstTech = document.createElement('button');
+    firstTech.innerText = project["Smart Technologie 1"];
+    firstTech.className = 'btn btn-outline-danger btn-sm m-2';
+    let secondTech = document.createElement('button');
+    secondTech.innerText = project["Smart Technologie 2"];
+    secondTech.className = 'btn btn-outline-danger btn-sm m-2';
+    let thirdTech = document.createElement('button');
+    thirdTech.innerText = project["Smart Technologie 3"];
+    thirdTech.className = 'btn btn-outline-danger btn-sm m-2';
+
+    let cardFooter = document.createElement('div');
+    cardFooter.className = 'card-footer alert-primary';
+    let owner = document.createElement('div');
+    owner.innerText = project["Project owners"];
+    owner.className = "lead"
+
+    cardBody.appendChild(title);
+    cardBody.appendChild(doel);
+    cardBody.appendChild(deliverablesTitle)
+    cardBody.appendChild(deliverables)
+
+    cardBody.appendChild(voorwaardenRow)
+    voorwaardenRow.appendChild(kwaliteitCol)
+    kwaliteitCol.appendChild(kwaliteitTitle)
+    kwaliteitCol.appendChild(kwaliteitText)
+    voorwaardenRow.appendChild(faciliteitenCol)
+    faciliteitenCol.appendChild(faciliteitenTitle)
+    faciliteitenCol.appendChild(faciliteitenText)
+
+    cardBody.appendChild(cardButtons);
+    cardButtons.appendChild(firstTech);
+    cardButtons.appendChild(secondTech);
+    cardButtons.appendChild(thirdTech);
+
+    card.appendChild(cardBody);
+
+    cardFooter.append(owner);
+    card.appendChild(cardFooter);
+    cardCol.appendChild(card);
+    cardContainer.appendChild(cardCol);
+}
+
+let initListOfTasks = () => {
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuA_QfxR9bCAm8Injpcx6kLy3bp_A8m2Yek5sHMpx0otFp1ecXVxdcOlx7ritx-dw53WfQDOM6ifCO/pub?output=csv"
+    if (cardContainer) {
+        document.getElementById('card-container').replaceWith(cardContainer);
+        return;
+    }
+
+    cardContainer = document.getElementById('card-container');
+    d3.csv(url).then(function(projects) {
+        projects.forEach((project) => {
+            createProjectCard(project);
+    });
+    
+    });
+};
+
+initListOfTasks();
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
