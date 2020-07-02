@@ -1,29 +1,31 @@
-Geslacht,OpleidingNaam,OpleidingType,Instelling,Plaats,Lat,Lon
-m,Finance & Control,ECON,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,Finance & Control,ECON,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,Finance & Control,ECON,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,Logistics Management,ECON,HAN,Arnhem,52.00336,5.92857
-v,Human Resource Management,ECON,HAN,Arnhem,52.00336,5.92857
-m,Ondernemerschap & Retail Management,ECON,HAN,Arnhem,52.00336,5.92857
-v,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-v,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,Commerciële Economie,ECON,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,Technische Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,Facility Management,ECON,HAN,Arnhem,52.00336,5.92857
-v,Finance & Control,ECON,HAN,Arnhem,52.00336,5.92857
-m,Bedrijfskunde,ECON,HAN,Arnhem,52.00336,5.92857
-m,HBO-ICT,ICT,HAN,Arnhem,52.00336,5.92857
-m,Technische Bedrijfskunde,ECON,Saxion,Enschede,52.23339,6.907087
-m,Technische Bedrijfskunde,ECON,Avans,Breda,51.56436,4.730148
-m,Bedrijfskunde,ECON,Avans,Breda,51.56436,4.730148
-m,Ondernemerschap en Retail Management,ECON,Avans,Breda,51.56436,4.730148
-v,Bedrijfskunde,ECON,Avans,Breda,51.56436,4.730148
-m,Ondernemerschap en Retail Management,ECON,Avans,Breda,51.56436,4.730148
+Geslacht,Instelling,OpleidingNaam,OpleidingType,Plaats,Lat,Lon
+M,Fontys Hogescholen,Toegepaste Wiskunde,ICT,Eindhoven,51.4416,5.4697
+M,Saxion,Technische Bedrijfskunde,ECON,Enschede,52.23339,6.907087
+M,Avans Hogeschool,Ondernemerschap & Retail Management,ECON,Breda,51.56436,4.730148
+M,Avans Hogeschool,Ondernemerschap & Retail Management,ECON,Breda,51.56436,4.730148
+V,Avans Hogeschool,Bedrijfskunde,ECON,Breda,51.56436,4.730148
+M,Avans Hogeschool,Technische Bedrijfskunde,ECON,Breda,51.56436,4.730148
+M,Avans Hogeschool,Bedrijfskunde,ECON,Breda,51.56436,4.730148
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+V,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+M,HAN,Ondernemerschap & Retail Management,ECON,Arnhem,52.00336,5.92857
+M,HAN,Finance & Control (Bedrijfseconomie),ECON,Arnhem,52.00336,5.92857
+V,HAN,Finance & Control (Bedrijfseconomie),ECON,Arnhem,52.00336,5.92857
+M,HAN,Finance & Control (Bedrijfseconomie),ECON,Arnhem,52.00336,5.92857
+M,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+V,HAN,Human Resource Management,ECON,Arnhem,52.00336,5.92857
+M,HAN,Technische Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,Logistics Management,ECON,Arnhem,52.00336,5.92857
+V,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,Bedrijfskunde,ECON,Arnhem,52.00336,5.92857
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+M,HAN,HBO-ICT,ICT,Arnhem,52.00336,5.92857
+M,HAN,Facility Management,ECON,Arnhem,52.00336,5.92857
+M,HAN,Ondernemerschap & Retail Management,ECON,Arnhem,52.00336,5.92857
+M,HAN,Food & Business,ECON,Arnhem,52.00336,5.92857
+M,HAN,Automotive,ENGR,Arnhem,52.00336,5.92857
