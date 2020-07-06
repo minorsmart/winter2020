@@ -59,7 +59,7 @@ plot_ly(dfOpleidingType, labels = ~Type, values = ~Aantal, type = 'pie', width =
 ```
 
 ```{r echo=FALSE, warning=FALSE}
-dfOpleidingNaam <- data.frame(Naam = colnames(tblOpleidingNaam)[1:10], Aantal = tblOpleidingNaam[dim(tblOpleidingNaam)[1],1:10])
+dfOpleidingNaam <- data.frame(Naam = colnames(tblOpleidingNaam)[1:11], Aantal = tblOpleidingNaam[dim(tblOpleidingNaam)[1],1:11])
 plot_ly(dfOpleidingNaam, labels = ~Naam, values = ~Aantal, type = 'pie', width = 700) %>% layout(showlegend = TRUE) %>% layout(title = 'Verdeling inschrijvingen naar opleiding')
 ```
 
