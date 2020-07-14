@@ -94,7 +94,7 @@ let createProjectCard = (project) => {
     faciliteitenText.innerText = project["Succesvoorwaarden opdrachtgevers"]
 
     let cardButtons = document.createElement('div');
-    cardButtons.className = 'row';
+    cardButtons.className = 'row mb-4';
     let firstTech = document.createElement('button');
     firstTech.innerText = project["Smart Technologie 1"];
     firstTech.className = 'btn btn-outline-danger btn-sm m-2';
@@ -104,6 +104,12 @@ let createProjectCard = (project) => {
     let thirdTech = document.createElement('button');
     thirdTech.innerText = project["Smart Technologie 3"];
     thirdTech.className = 'btn btn-outline-danger btn-sm m-2';
+
+    let achtergrondTitle = document.createElement('h5')
+    achtergrondTitle.innerHTML = "Notabene"
+    let achtergrond = document.createElement('div');
+    achtergrond.innerText = project.Achtergrondmateriaal;
+    achtergrond.className = 'card-text p mb-4';
 
     let cardFooter = document.createElement('div');
     cardFooter.className = 'card-footer alert-primary';
@@ -128,6 +134,9 @@ let createProjectCard = (project) => {
     cardButtons.appendChild(firstTech);
     cardButtons.appendChild(secondTech);
     cardButtons.appendChild(thirdTech);
+
+    cardBody.appendChild(achtergrondTitle)
+    cardBody.appendChild(achtergrond)
 
     card.appendChild(cardBody);
 
