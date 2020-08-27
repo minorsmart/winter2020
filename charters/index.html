@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
 <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autolinker/3.14.1/Autolinker.min.js"></script>
 <link rel="stylesheet" href="style.css">
 <title>MSI</title>
 </head>
@@ -50,6 +51,10 @@
     
     
 <script>
+    var autolinker = new Autolinker( {
+    newWindow : false,
+    truncate  : 30
+} );
 
 let cardContainer;
 
@@ -108,7 +113,7 @@ let createProjectCard = (project) => {
     let achtergrondTitle = document.createElement('h5')
     achtergrondTitle.innerHTML = "Nota Bene"
     let achtergrond = document.createElement('div');
-    achtergrond.innerText = project.Achtergrondmateriaal;
+    achtergrond.innerHTML = autolinker.link(project.Achtergrondmateriaal);
     achtergrond.className = 'card-text p mb-4';
 
     let cardFooter = document.createElement('div');
